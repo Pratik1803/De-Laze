@@ -6,7 +6,7 @@ import axios from "axios";
 function App() {
   const [loading, setLoading] = useState<Boolean>(false);
   const [activity, setActivity] = useState<string>("");
-  const [type, setType] = useState<string>("");
+  const [type, setType] = useState<string>("education");
   const [accessibility, setAccessibility] = useState<string>("");
   const [people, setPeople] = useState<string>("");
 
