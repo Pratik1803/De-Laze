@@ -1,0 +1,79 @@
+.app {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	padding-top: 10vh;
+    overflow-x: hidden;
+	h1 {
+		font-family: Anurati;
+        font-size: 5vw;
+	}
+	.logo {
+		position: absolute;
+		left: 10vw;
+		top: 50vh;
+        transform: translateY(-50%);
+		font-size: 30vw;
+		color: #f8f8f8;
+        z-index: -1;
+		// text-shadow: 0px 50px 50px rgba(0,0,0,0.25) inset;
+	}
+	.intro {
+		text-align: center;
+		margin: 50px 0px;
+	}
+	.select_options {
+		select, input {
+			margin: 20px;
+		}
+	}
+    h2{
+        padding-bottom: 20px;
+    }
+	button {
+		color: #090909;
+		padding: 5px 15px;
+		font-size: 18px;
+		border-radius: 0.5em;
+		background: #fafafa;
+		border: 1px solid #e8e8e8;
+		transition: all 0.3s;
+		box-shadow: 6px 6px 12px #e6e4e4, -6px -6px 12px #ffffff;
+		cursor: pointer;
+		text-transform: none;
+	}
+
+	button:hover {
+		border: 1px solid white;
+	}
+
+	button:active {
+		box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+	}
+}
+
+@media only screen and (max-width:700px){
+    .app{
+        h1{
+            font-size: 48px;
+        }
+        .select_options{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            select,input{
+                margin: 10px auto;
+            }
+        }
+        h2{
+            padding: 20px;
+            text-align: center;
+        }
+    }
+}
