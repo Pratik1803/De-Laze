@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/De-Laze/static/css/main.f1db65c0.css",
-    "main.js": "/De-Laze/static/js/main.f6a96859.js",
+    "main.js": "/De-Laze/static/js/main.790dfab7.js",
     "static/media/Anurati-Regular.otf": "/De-Laze/static/media/Anurati-Regular.ada0eaa4927bd5989165.otf",
     "index.html": "/De-Laze/index.html",
     "main.f1db65c0.css.map": "/De-Laze/static/css/main.f1db65c0.css.map",
-    "main.f6a96859.js.map": "/De-Laze/static/js/main.f6a96859.js.map"
+    "main.790dfab7.js.map": "/De-Laze/static/js/main.790dfab7.js.map"
   },
   "entrypoints": [
     "static/css/main.f1db65c0.css",
-    "static/js/main.f6a96859.js"
+    "static/js/main.790dfab7.js"
   ]
 }
