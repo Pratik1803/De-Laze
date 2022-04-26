@@ -4,26 +4,47 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 
 function App() {
-  const [loading, setLoading] = useState<Boolean>(false);
-  const [activity, setActivity] = useState<string>("");
-  const [type, setType] = useState<string>("education");
-  const [accessibility, setAccessibility] = useState<string>("");
-  const [people, setPeople] = useState<string>("");
+	const [loading, setLoading] = useState<Boolean>(false);
+	const [activity, setActivity] = useState<string>("");
+	const [type, setType] = useState<string>("education");
+	const [accessibility, setAccessibility] = useState<string>("");
+	const [people, setPeople] = useState<string>("");
 
-  const getTask = async ()=>{
-    setLoading(true);
-    try {
-      const result = await axios({
-        method:"get",
-        url:`http://www.boredapi.com/api/activity?type=${type}&accessibility=${Number(accessibility)/10}&participants=${people}`
-      });
-      setActivity(result.data.activity)
-    } catch (error) {
-      console.log(error);
-      
-    };
-    setLoading(false);
-  }
+	const getTask = async () => {
+		setLoading(true);
+		try {
+			if(accessibility || people){
+				const result = await axios({
+					method: "get",
+					url: `http://www.boredapi.com/api/activity?type=${type}&accessibility=${
+						Number(accessibility) / 10
+					}&participants=${people}`,
+				});
+				setActivity(result.data.activity);
+				alert(result.data.activity);
+			}else{
+				alert("Fill the Details first!");
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		setLoading(false);
+	};
+
+	const getRandom = async () => {
+		setLoading(true);
+		try {
+			const result = await axios({
+				method: "get",
+				url: `https://www.boredapi.com/api/activity`,
+			});
+			setActivity(result.data.activity);
+			alert(result.data.activity);
+		} catch (error) {
+			console.log(error);
+		}
+		setLoading(false);
+	};
 
 	return (
 		<main className={Styles.app}>
@@ -38,9 +59,11 @@ function App() {
 					<p>Just help us filter out some data.</p>
 				</div>
 				<div className={Styles.select_options}>
-					<select onChange={(e)=>{
-            setType(e.target.value);
-          }}>
+					<select
+						onChange={(e) => {
+							setType(e.target.value);
+						}}
+					>
 						<option value="education">Education</option>
 						<option value="recreational">Recreational</option>
 						<option value="social">Social</option>
@@ -57,12 +80,12 @@ function App() {
 						placeholder="Accessibility (0-10)"
 						name=""
 						id=""
-            value={accessibility}
-            onChange={(e)=>{
-              if(Number(e.target.value)<=10 && Number(e.target.value)>=0){
-                setAccessibility(e.target.value);
-              };
-            }}
+						value={accessibility}
+						onChange={(e) => {
+							if (Number(e.target.value) <= 10 && Number(e.target.value) >= 0) {
+								setAccessibility(e.target.value);
+							}
+						}}
 					/>
 					<input
 						type="number"
@@ -70,17 +93,18 @@ function App() {
 						placeholder="No of people..."
 						name=""
 						id=""
-            value={people}
-            onChange={(e)=>{
-              if(Number(e.target.value)>=0){
-                setPeople(e.target.value);
-              };
-            }}
+						value={people}
+						onChange={(e) => {
+							if (Number(e.target.value) >= 0) {
+								setPeople(e.target.value);
+							}
+						}}
 					/>
 				</div>
 			</>
-      <h2>{activity}</h2>
-			<Button onClick={getTask}>{activity?"Get Another.":"Go!"}</Button>
+			<Button onClick={getTask}>{activity ? "Get Another." : "Go!"}</Button>
+			<p style={{margin:"10px 0px"}}>OR</p>
+			<Button onClick={getRandom}>Get Random</Button>
 		</main>
 	);
 }
