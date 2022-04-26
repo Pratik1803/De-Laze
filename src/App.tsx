@@ -80,7 +80,7 @@ function App() {
 				</div>
 			</>
       <h2>{activity}</h2>
-			<Button onClick={getTask}>{activity?"Try Again.":"Go!"}</Button>
+			<Button onClick={getTask}>{activity?"Get Another.":"Go!"}</Button>
 		</main>
 	);
 }
